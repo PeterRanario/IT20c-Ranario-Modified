@@ -26,5 +26,10 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         setResizable(false);
+        
+        JLabel headerLabel = new JLabel("Stack Calculator", SwingConstants.CENTER);
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        add(headerLabel, BorderLayout.NORTH);
+
     }
 }
