@@ -20,4 +20,12 @@ public class Stack {
         top = -1;
 
     }
+
+    public boolean push(int value) {
+        if (top >= stackArray.length - 1) {
+            return false;
+        }
+        stackArray[++top] = value;
+        return true;
+    }
 }
