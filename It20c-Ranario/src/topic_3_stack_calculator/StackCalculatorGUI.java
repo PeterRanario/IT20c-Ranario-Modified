@@ -21,5 +21,10 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
 
     public StackCalculatorGUI() {
         
+         setTitle("Stack Calculator");
+        setSize(400, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout(10, 10));
+        setResizable(false);
     }
 }
