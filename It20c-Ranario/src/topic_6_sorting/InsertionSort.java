@@ -17,6 +17,13 @@ public class InsertionSort {
             int currentElement = data[index];
             int position = index - 1;
         }
-    }
 
+        // Shift elements of data[0..index-1], that are greater than currentElement, to one position ahead
+        while (position >= 0 && data[position] > currentElement) {
+            data[position + 1] = data[position];
+            position = position - 1;
+        }
+        data[position + 1] = currentElement;
+    }
 }
+
