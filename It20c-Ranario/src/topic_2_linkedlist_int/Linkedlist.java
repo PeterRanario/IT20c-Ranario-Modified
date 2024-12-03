@@ -68,4 +68,28 @@ public class Linkedlist {
             currentNode = currentNode.next;
         }
     }
+
+    // Method to move a node to a new position
+    public void moveNodePointer(int oldIndex, int newIndex) {
+        if (head == null || oldIndex == newIndex) {
+            return;
+        }
+
+        Node currentNode = head;
+        Node previousNode = null;
+        Node nodeToMove = null;
+        Node previousOfMovingNode = null;
+
+        // Find the node to move
+        for (int i = 0; currentNode != null && i < oldIndex; i++) {
+            previousOfMovingNode = previousNode;
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        nodeToMove = currentNode;
+
+        if (nodeToMove == null) {
+            return;
+        }
+    }
 }
