@@ -20,5 +20,20 @@ public class QuickSort {
             quickSort(numbers, pivotIndex + 1, end);
         }
     }
+    
+     private static int partition(int[] numbers, int start, int end) {
+        int pivotValue = numbers[end];
+        int smallerIndex = start - 1;
+
+        for (int currentIndex = start; currentIndex < end; currentIndex++) {
+            if (numbers[currentIndex] <= pivotValue) {
+                smallerIndex++;
+                // Swap numbers[smallerIndex] and numbers[currentIndex]
+                int temp = numbers[smallerIndex];
+                numbers[smallerIndex] = numbers[currentIndex];
+                numbers[currentIndex] = temp;
+            }
+        }
+    }
 
 }
