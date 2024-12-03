@@ -31,4 +31,15 @@ public class BubbleSort {
         }
         System.out.println();
     }
+
+    public static void main(String[] args) {
+        int[] numbers = {11, 22, 33, 12, 44, 55, 90};
+        System.out.println("Original array:");
+        printArray(numbers);
+
+        bubbleSort(numbers);
+
+        System.out.println("Sorted array:");
+        printArray(numbers);
+    }
 }
