@@ -46,12 +46,23 @@ public class MergeSort {
             array[mergedIndex++] = rightHalf[rightIndex++];
         }
     }
-    
+
     public static void printArray(int[] array) {
         for (int element : array) {
             System.out.print(element + " ");
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int[] array = {38, 27, 43, 3, 9, 82, 10};
+        System.out.println("Original array:");
+        printArray(array);
+
+        mergeSort(array);
+
+        System.out.println("Sorted array:");
+        printArray(array);
     }
 
 }
