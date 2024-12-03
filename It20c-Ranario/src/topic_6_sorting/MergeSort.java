@@ -28,4 +28,23 @@ public class MergeSort {
         merge(array, leftHalf, rightHalf);
     }
 
+    private static void merge(int[] array, int[] leftHalf, int[] rightHalf) {
+        int leftIndex = 0, rightIndex = 0, mergedIndex = 0;
+        while (leftIndex < leftHalf.length && rightIndex < rightHalf.length) {
+            if (leftHalf[leftIndex] <= rightHalf[rightIndex]) {
+                array[mergedIndex++] = leftHalf[leftIndex++];
+            } else {
+                array[mergedIndex++] = rightHalf[rightIndex++];
+            }
+        }
+
+        while (leftIndex < leftHalf.length) {
+            array[mergedIndex++] = leftHalf[leftIndex++];
+        }
+
+        while (rightIndex < rightHalf.length) {
+            array[mergedIndex++] = rightHalf[rightIndex++];
+        }
+    }
+
 }
