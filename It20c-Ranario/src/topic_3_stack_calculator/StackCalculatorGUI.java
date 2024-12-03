@@ -47,7 +47,35 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         for (int i = 0; i <= 9; i++) {
             createButton(buttonPanel, String.valueOf(i), new Color(173, 216, 230));
         }
+        
+        String[] operations = {"+", "-", "*", "/"};
+        Color[] opColors = {
+            new Color(135, 206, 250),
+            new Color(255, 99, 71),
+            new Color(144, 238, 144),
+            new Color(255, 215, 0)
+        };
 
+        for (int i = 0; i < operations.length; i++) {
+            createButton(buttonPanel, operations[i], opColors[i]);
+        }
 
+        createButton(buttonPanel, "Clear", new Color(255, 165, 0));
+        createButton(buttonPanel, "Exit", new Color(255, 0, 0));
+
+        add(buttonPanel, BorderLayout.SOUTH);
+    
     }
+    
+    private void createButton(JPanel panel, String text, Color bgColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 18));
+        button.setBackground(bgColor);
+        button.setForeground(Color.BLACK);
+        button.addActionListener(this);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        panel.add(button);
+    }
+
 }
