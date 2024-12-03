@@ -28,4 +28,11 @@ public class Stack {
         stackArray[++top] = value;
         return true;
     }
+
+    public int pop() {
+        if (top < 0) {
+            return -1;
+        }
+        return stackArray[top--];
+    }
 }
