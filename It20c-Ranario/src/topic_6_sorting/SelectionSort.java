@@ -10,8 +10,8 @@ package topic_6_sorting;
  * @author Peter
  */
 public class SelectionSort {
-    
-     public static void selectionSort(int[] numbers) {
+
+    public static void selectionSort(int[] numbers) {
         int length = numbers.length;
         for (int current = 0; current < length - 1; current++) {
             int smallestIndex = current;
@@ -26,5 +26,23 @@ public class SelectionSort {
             numbers[current] = temp;
         }
     }
-    
+
+    public static void printArray(int[] array) {
+        for (int number : array) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {64, 25, 12, 22, 11};
+        System.out.println("Original array:");
+        printArray(numbers);
+
+        selectionSort(numbers);
+
+        System.out.println("Sorted array:");
+        printArray(numbers);
+    }
+
 }
