@@ -16,22 +16,23 @@ import java.util.Stack;
  * @author Peter
  */
 public class StackCalculatorGUI extends JFrame implements ActionListener {
+
     private Stack<Integer> numberStack = new Stack<>();
     private JTextArea displayArea;
 
     public StackCalculatorGUI() {
-        
-         setTitle("Stack Calculator");
+
+        setTitle("Stack Calculator");
         setSize(400, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         setResizable(false);
-        
+
         JLabel headerLabel = new JLabel("Stack Calculator", SwingConstants.CENTER);
         headerLabel.setFont(new Font("Arial", Font.BOLD, 24));
         add(headerLabel, BorderLayout.NORTH);
-        
-         displayArea = new JTextArea(5, 20);
+
+        displayArea = new JTextArea(5, 20);
         displayArea.setEditable(false);
         displayArea.setFont(new Font("Courier New", Font.PLAIN, 16));
         displayArea.setMargin(new Insets(10, 10, 10, 10));
@@ -39,15 +40,15 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         displayArea.setForeground(Color.BLACK);
         JScrollPane scrollPane = new JScrollPane(displayArea);
         add(scrollPane, BorderLayout.CENTER);
-        
-         JPanel buttonPanel = new JPanel();
+
+        JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5, 4, 10, 10));
         buttonPanel.setBackground(new Color(255, 255, 255));
 
         for (int i = 0; i <= 9; i++) {
             createButton(buttonPanel, String.valueOf(i), new Color(173, 216, 230));
         }
-        
+
         String[] operations = {"+", "-", "*", "/"};
         Color[] opColors = {
             new Color(135, 206, 250),
@@ -64,9 +65,9 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         createButton(buttonPanel, "Exit", new Color(255, 0, 0));
 
         add(buttonPanel, BorderLayout.SOUTH);
-    
+
     }
-    
+
     private void createButton(JPanel panel, String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 18));
@@ -77,8 +78,8 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         panel.add(button);
     }
-    
-     @Override
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
 
@@ -95,8 +96,8 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
             performOperation(command);
         }
     }
-    
-     private void performOperation(String operation) {
+
+    private void performOperation(String operation) {
         if (numberStack.size() < 2) {
             displayArea.append("Error: Input at least two numbers to " + operation + ".\n");
             return;
@@ -104,7 +105,7 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
         int secondNumber = numberStack.pop();
         int firstNumber = numberStack.pop();
         int result = 0;
-        
+
         switch (operation) {
             case "+":
                 result = firstNumber + secondNumber;
@@ -125,7 +126,22 @@ public class StackCalculatorGUI extends JFrame implements ActionListener {
                 result = firstNumber / secondNumber;
                 break;
         }
+
+        numberStack.push(result);
+        displayArea.append("Performed " + operation + ": " + firstNumber + " " + operation + " " + secondNumber + " = " + result + "\n");
+        displayCurrentStack();
+
     }
 
+    private void displayCurrentStack() {
+        displayArea.append("Current Stack: " + numberStack + "\n");
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            StackCalculatorGUI calculator = new StackCalculatorGUI();
+            calculator.setVisible(true);
+        });
+    }
 
 }
